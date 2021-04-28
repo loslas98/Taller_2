@@ -6,17 +6,16 @@ import java.nio.file.Paths;
 public class Taller02UnitTesting {
     public static void main(String[] args) throws IOException {
         ArrayList<String> lista = new ArrayList<>();
-        String ruta = leerRuta();
-        String contenido = leerArchivo(ruta);
+        String contenido = leerArchivo("cadenas.txt");
         añadirAarray(lista,contenido);
         System.out.println("numero de lineas del archivo: "+contarLineas(lista));
+        verificarPalindromoArray(lista);
 
     }
 
 
 
     public static String leerArchivo(String ruta) throws IOException {
-        if(validarRuta(ruta)){
             Path archivo = Paths.get(ruta);
             String contenido = "";
             boolean validarCont = validarContenido(contenido,archivo);
@@ -27,28 +26,12 @@ public class Taller02UnitTesting {
             }
 
 
-        }
+
         return "";
 
 
     }
-    public static String leerRuta(){
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Ingrese ruta del archivo");
-        String ruta = sc.nextLine();
-        return ruta;
-    }
 
-    public static boolean validarRuta(String ruta){
-        if(ruta.contains(".txt")){
-            System.out.println("ruta correcta");
-            return true;
-        }else{
-            System.out.println("ruta incorrecta");
-            return false;
-        }
-
-    }
 
     public static boolean validarContenido(String contenido,Path archivo){
         try {
@@ -107,6 +90,15 @@ public class Taller02UnitTesting {
         }
         return true;
     }
+    public static void verificarPalindromoArray(ArrayList<String> datos){
+        for (String dato:datos){
+            System.out.println(verificarPalindromo(dato));
+
+
+        }
+
+    }
+   
     
 
 
