@@ -2,9 +2,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 public class Taller02UnitTesting {
-    public static void main(String[] args) throws IOException {
+   public static void main(String[] args) throws IOException {
         ArrayList<String> lista = new ArrayList<>();
         String contenido = leerArchivo("cadenas.txt");
         añadirAarray(lista,contenido);
@@ -18,7 +19,7 @@ public class Taller02UnitTesting {
     public static String leerArchivo(String ruta) throws IOException {
             Path archivo = Paths.get(ruta);
             String contenido = "";
-            boolean validarCont = validarContenido(contenido,archivo);
+            boolean validarCont = validarContenido(archivo);
             if (validarCont){
                 contenido = new String(Files.readAllBytes(archivo));
                 return contenido;
@@ -33,9 +34,9 @@ public class Taller02UnitTesting {
     }
 
 
-    public static boolean validarContenido(String contenido,Path archivo){
+    public static boolean validarContenido(Path archivo){
         try {
-            contenido = new String(Files.readAllBytes(archivo));
+            String contenido = new String(Files.readAllBytes(archivo));
 
         } catch (IOException e) {
             System.out.println("error lectura archivo");
